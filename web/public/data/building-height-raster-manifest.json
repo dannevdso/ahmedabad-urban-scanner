@@ -1,0 +1,75 @@
+{
+  "building-height": {
+    "image": "./data/building-height-2023.png",
+    "coordinates": [
+      [
+        72.4109191373896,
+        23.263714341096108
+      ],
+      [
+        72.73796268185004,
+        23.268770122568007
+      ],
+      [
+        72.74379212245495,
+        22.920265285330075
+      ],
+      [
+        72.41758925179329,
+        22.915293725211118
+      ]
+    ],
+    "source": "data/external/open-buildings-height/ahmedabad-gandhinagar-building-height-2023.tif",
+    "source_name": "Google Research Open Buildings Temporal",
+    "source_collection": "GOOGLE/Research/open-buildings-temporal/v1",
+    "source_year": 2023,
+    "band": "building_height",
+    "unit": "metres",
+    "resolution_m": 30,
+    "effective_resolution_m": 4,
+    "source_storage_resolution_m": 0.5,
+    "fine_tile_manifest": "./data/building-height-fine-manifest.json",
+    "presence_threshold": 0.2,
+    "valid_pixels": 228452,
+    "min": 0.02348252199590206,
+    "max": 92.31878662109375,
+    "colormap": "teal-green-yellow-orange-red",
+    "palette_stops": [
+      {
+        "value": 0.0,
+        "color": "#008080"
+      },
+      {
+        "value": 0.16666666666666666,
+        "color": "#22c55e"
+      },
+      {
+        "value": 0.3333333333333333,
+        "color": "#84cc16"
+      },
+      {
+        "value": 0.5,
+        "color": "#facc15"
+      },
+      {
+        "value": 0.6666666666666666,
+        "color": "#f97316"
+      },
+      {
+        "value": 0.8333333333333334,
+        "color": "#ef4444"
+      },
+      {
+        "value": 1.0,
+        "color": "#dc2626"
+      }
+    ],
+    "display_range": [
+      0,
+      30
+    ],
+    "validation_status": "verified",
+    "scope": "full-study-boundary raster",
+    "caveat": "Modelled height, not surveyed height; 30 m overview switches to ~4 m effective-resolution tiles at zoom 15; source storage grid is 0.5 m; presence threshold 0.2; values above 30 m are clamped red for display; pixel-level analytical overlay, not a per-footprint building attribute."
+  }
+}

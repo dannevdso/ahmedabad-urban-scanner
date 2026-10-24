@@ -1,0 +1,33 @@
+[project]
+name = "Ahmedabad Urban Scanner — full building analysis"
+study_area = "Ahmedabad–Gandhinagar black-line study area"
+analysis_crs = "EPSG:32643"
+source_crs = "EPSG:4326"
+
+[boundary]
+path = "config/study_areas/ahmedabad-gandhinagar-black-line.gpkg"
+layer = "study_area"
+
+[inputs]
+osm = "data/external/osm/ahmedabad-gandhinagar-osm.gpkg"
+buildings = "data/google-open-buildings-v3/raw"
+
+[selection]
+max_buildings = 1077523
+building_grid_spacing_m = 150.0
+representative_origin_grid_m = 1000.0
+criticality_origin_grid_m = 2000.0
+candidate_site_grid_m = 500.0
+
+[network]
+source_layer = "lines"
+walkable_highway_required = true
+min_length_m = 1.0
+walk_speed_kmh = 4.8
+snap_tolerance_m = 2.0
+
+[analysis]
+max_building_metrics = 1077523
+run_tessellation = true
+run_space_syntax = false
+notes = "Full current-study Open Buildings footprint analysis package. Space syntax is excluded."

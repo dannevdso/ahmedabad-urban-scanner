@@ -1,0 +1,27 @@
+{
+  "file": "ahmedabad-boundary.geojson",
+  "source": {
+    "path": "external-inputs/amc_boundary.geojson",
+    "sha256": "2d6b5846e9dae8f239cebaafaccf5cb295655953c78e352eef21af819cbfb935",
+    "feature_count": 1,
+    "crs": "EPSG:4326",
+    "geometry_type": "Polygon",
+    "exterior_vertex_count": 1478,
+    "interior_ring_count": 1
+  },
+  "output": {
+    "feature_count": 1,
+    "geometry_type": "Polygon",
+    "exterior_vertex_count": 1478,
+    "interior_ring_count": 0,
+    "bounds_wgs84": [
+      72.448455,
+      22.91047,
+      72.701959,
+      23.140851
+    ],
+    "sha256": "9de06ae51ffe8435b5c03dd4d1c02c1e8ee3b444f9ece2007840e21720b350ec",
+    "bytes": 32315
+  },
+  "method": "Copied every polygon exterior shell only; interior rings were intentionally omitted; no simplification or coordinate transformation was applied."
+}

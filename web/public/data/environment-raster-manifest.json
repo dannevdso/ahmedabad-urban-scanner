@@ -1,0 +1,246 @@
+{
+  "surface-temperature": {
+    "image": "./data/environment-surface-temperature.png",
+    "coordinates": [
+      [
+        72.41079345037157,
+        23.26372886950044
+      ],
+      [
+        72.73813009009197,
+        23.268789141198738
+      ],
+      [
+        72.7439591048386,
+        22.920284264487098
+      ],
+      [
+        72.41746389304392,
+        22.915308288895066
+      ]
+    ],
+    "valid_pixels": 1425695,
+    "min": 19.84971809387207,
+    "max": 50.5039176940918,
+    "colormap": "inferno",
+    "palette_stops": [
+      {
+        "value": 0.0,
+        "color": "#000003"
+      },
+      {
+        "value": 0.16666666666666666,
+        "color": "#32095d"
+      },
+      {
+        "value": 0.3333333333333333,
+        "color": "#781c6d"
+      },
+      {
+        "value": 0.5,
+        "color": "#bb3754"
+      },
+      {
+        "value": 0.6666666666666666,
+        "color": "#ed6825"
+      },
+      {
+        "value": 0.8333333333333334,
+        "color": "#fbb51a"
+      },
+      {
+        "value": 1.0,
+        "color": "#fcfea4"
+      }
+    ],
+    "display_range": [
+      35,
+      55
+    ],
+    "validation_status": "verified",
+    "unit": "\u00b0C"
+  },
+  "ndvi": {
+    "image": "./data/environment-ndvi.png",
+    "coordinates": [
+      [
+        72.41089111961816,
+        23.263730481209777
+      ],
+      [
+        72.73813009009197,
+        23.268789141198738
+      ],
+      [
+        72.7439591048386,
+        22.920284264487098
+      ],
+      [
+        72.41756131135291,
+        22.915309873756836
+      ]
+    ],
+    "valid_pixels": 12909787,
+    "min": -1.0,
+    "max": 1.0,
+    "colormap": "RdYlGn",
+    "palette_stops": [
+      {
+        "value": 0.0,
+        "color": "#a50026"
+      },
+      {
+        "value": 0.16666666666666666,
+        "color": "#e95739"
+      },
+      {
+        "value": 0.3333333333333333,
+        "color": "#fdbe6e"
+      },
+      {
+        "value": 0.5,
+        "color": "#fefebd"
+      },
+      {
+        "value": 0.6666666666666666,
+        "color": "#b7e075"
+      },
+      {
+        "value": 0.8333333333333334,
+        "color": "#4baf5c"
+      },
+      {
+        "value": 1.0,
+        "color": "#006837"
+      }
+    ],
+    "display_range": [
+      -0.2,
+      0.7
+    ],
+    "validation_status": "verified",
+    "unit": "unitless"
+  },
+  "vegetation-fraction": {
+    "image": "./data/environment-vegetation-fraction.png",
+    "coordinates": [
+      [
+        72.41089111961816,
+        23.263730481209777
+      ],
+      [
+        72.73813009009197,
+        23.268789141198738
+      ],
+      [
+        72.7439591048386,
+        22.920284264487098
+      ],
+      [
+        72.41756131135291,
+        22.915309873756836
+      ]
+    ],
+    "valid_pixels": 12909787,
+    "min": 0.0,
+    "max": 1.0,
+    "colormap": "YlGn",
+    "palette_stops": [
+      {
+        "value": 0.0,
+        "color": "#ffffe5"
+      },
+      {
+        "value": 0.16666666666666666,
+        "color": "#edf8b2"
+      },
+      {
+        "value": 0.3333333333333333,
+        "color": "#bbe395"
+      },
+      {
+        "value": 0.5,
+        "color": "#77c578"
+      },
+      {
+        "value": 0.6666666666666666,
+        "color": "#379e54"
+      },
+      {
+        "value": 0.8333333333333334,
+        "color": "#0b703a"
+      },
+      {
+        "value": 1.0,
+        "color": "#004529"
+      }
+    ],
+    "display_range": [
+      0,
+      1
+    ],
+    "validation_status": "verified",
+    "unit": "0\u20131"
+  },
+  "heat-green-priority": {
+    "image": "./data/environment-heat-green-priority.png",
+    "coordinates": [
+      [
+        72.41079345037157,
+        23.26372886950044
+      ],
+      [
+        72.73813009009197,
+        23.268789141198738
+      ],
+      [
+        72.7439591048386,
+        22.920284264487098
+      ],
+      [
+        72.41746389304392,
+        22.915308288895066
+      ]
+    ],
+    "valid_pixels": 1421924,
+    "min": 0.00010817110887728631,
+    "max": 0.991212010383606,
+    "colormap": "magma",
+    "palette_stops": [
+      {
+        "value": 0.0,
+        "color": "#000003"
+      },
+      {
+        "value": 0.16666666666666666,
+        "color": "#2b115e"
+      },
+      {
+        "value": 0.3333333333333333,
+        "color": "#711f81"
+      },
+      {
+        "value": 0.5,
+        "color": "#b63679"
+      },
+      {
+        "value": 0.6666666666666666,
+        "color": "#f0605d"
+      },
+      {
+        "value": 0.8333333333333334,
+        "color": "#feaf78"
+      },
+      {
+        "value": 1.0,
+        "color": "#fbfcbf"
+      }
+    ],
+    "display_range": [
+      0,
+      1
+    ],
+    "validation_status": "verified",
+    "unit": "0\u20131"
+  }
+}

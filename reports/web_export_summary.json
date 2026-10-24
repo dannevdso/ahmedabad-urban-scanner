@@ -1,0 +1,27 @@
+{
+  "buildings": 1077523,
+  "gtfs_stops": 6737,
+  "gtfs_shapes": 876,
+  "gtfs_service_intensity_stops": 6737,
+  "planx_exports": {
+    "planx-centrality.geojson": 135115,
+    "planx-heat-risk.geojson": 49422
+  },
+  "space_syntax_exports": {
+    "space-syntax.geojson": 94723,
+    "space-syntax-points.geojson": 94723
+  },
+  "scope_notes": {
+    "centrality": "Full prepared-network centrality; 135,115 analysed edges with 500 sampled sources.",
+    "heat_risk": "Morphology proxy based on 30,000 buildings and 35 green spaces; not observed heat.",
+    "proposed_sites": "Archived historical hypothetical facility-location scenario; not a siting recommendation."
+  },
+  "building_geojson": "web/public/data/buildings.geojson",
+  "building_geojson_bytes": 535673621,
+  "bounds_wgs84": [
+    72.4155253,
+    22.9186725,
+    72.7376179,
+    23.2656023
+  ]
+}

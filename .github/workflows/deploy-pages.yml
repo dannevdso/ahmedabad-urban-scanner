@@ -1,0 +1,92 @@
+name: Deploy Ahmedabad Urban Scanner to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      base_path:
+        description: "Vite base path: / for ahd.da-za.com or /ahmedabad-urban-scanner/ for repository-URL testing"
+        required: true
+        default: "/"
+        type: string
+      deploy:
+        description: "Deploy after the test build"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  PAGES_BASE_PATH: ${{ github.event_name == 'workflow_dispatch' && inputs.base_path || vars.PAGES_BASE_PATH || '/' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Install frontend dependencies
+        run: npm ci
+        working-directory: web
+
+      - name: Run frontend tests
+        run: npm test
+        working-directory: web
+
+      - name: Build Vite site
+        run: npm run build
+        working-directory: web
+
+      - name: Audit publication and generate manifest
+        run: python3 scripts/audit_pages_publication.py
+
+      - name: Upload built Pages artifact
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.deploy)
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: web/dist
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.deploy)
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy built site
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  verify-live-ranges:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.deploy)
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: Check out range verification script
+        uses: actions/checkout@v4
+
+      - name: Verify PMTiles, FlatGeobuf, and GeoTIFF byte ranges
+        run: python3 scripts/check_static_range_support.py "${{ needs.deploy.outputs.page_url }}"

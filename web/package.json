@@ -1,0 +1,27 @@
+{
+  "name": "ahmedabad-urban-scanner-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "build:repo-url": "vite build --base=/ahmedabad-urban-scanner/",
+    "audit:pages": "python3 ../scripts/audit_pages_publication.py --public public --dist dist --policy pages-publication-assets.json",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "flatgeobuf": "^4.6.0",
+    "geotiff": "^3.0.5",
+    "maplibre-gl": "6.14.0",
+    "open-location-code": "^1.0.3",
+    "pmtiles": "^4.5.0",
+    "polygon-clipping": "^0.15.7",
+    "proj4": "^2.22.0"
+  },
+  "devDependencies": {
+    "vite": "^7.2.2",
+    "vitest": "^4.0.8"
+  }
+}

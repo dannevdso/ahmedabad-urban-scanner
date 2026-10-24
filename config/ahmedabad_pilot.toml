@@ -1,0 +1,75 @@
+[project]
+name = "Ahmedabad Urban Scanner"
+study_area = "Navrangpura pilot"
+analysis_crs = "EPSG:32643"
+source_crs = "EPSG:4326"
+
+[boundary]
+# Canonical order: min_lon, min_lat, max_lon, max_lat.
+bbox = [72.5443429, 23.0159998, 72.5843429, 23.0559998]
+
+[inputs]
+buildings = "data/derived/navrangpura-open-buildings-v3.parquet"
+building_accessibility = "data/derived/navrangpura-building-accessibility.parquet"
+building_environment = "data/derived/navrangpura-building-environment.parquet"
+destinations = "data/derived/navrangpura-osm-destinations.parquet"
+network_nodes = "data/derived/navrangpura-walk-nodes.parquet"
+network_edges = "data/derived/navrangpura-walk-edges.parquet"
+
+[building_source]
+provider = "Google Research Open Buildings"
+dataset = "Open Buildings V3 polygons"
+version = "v3"
+inference_date = "2023-05"
+licence = "CC BY 4.0 / ODbL 1.0"
+s2_level = 6
+s2_tokens = ["395f"]
+tile_url_template = "https://storage.googleapis.com/open-buildings-data/v3/polygons_s2_level_6_gzip_no_header/{token}_buildings.csv.gz"
+raw_dir = "data/google-open-buildings-v3/raw"
+confidence_threshold = 0.802
+threshold_precision = 0.85
+threshold_s2_level4_token = "395"
+min_footprint_area_m2 = 10.0
+
+[access]
+walk_speed_kmh = 4.8
+cutoffs_minutes = [5, 10, 15]
+network_type = "walk"
+network_buffer_m = 1600
+max_analysis_time_min = 45
+max_snap_distance_m = 250
+counts_include_building_connection = false
+
+[environment]
+heat_metric = "landsat_land_surface_temperature"
+greenery_metrics = ["ndvi", "vegetation_fraction", "walking_time_to_green_space"]
+hot_season_date_range = "2026-04-01/2026-05-31"
+raster_buffer_m = 150
+landsat_resolution_m = 30
+landsat_max_cloud_pct = 5
+landsat_max_scenes = 10
+sentinel_resolution_m = 10
+sentinel_max_cloud_pct = 5
+sentinel_max_scenes = 10
+sentinel_mgrs_tile = "43QBF"
+lst_neighbourhood_m = 100
+ndvi_neighbourhood_m = 50
+vegetation_ndvi_threshold = 0.3
+minimum_valid_scenes = 3
+
+[web]
+building_geojson = "web/public/data/buildings.geojson"
+metadata = "web/public/data/metadata.json"
+basemap_style = "https://tiles.openfreemap.org/styles/liberty"
+default_indicator = "categories"
+hosting_target = "Cloudflare Pages"
+
+[facility_categories]
+health = ["clinic", "doctors", "hospital", "pharmacy"]
+education = ["school", "kindergarten", "college", "university"]
+food = ["marketplace", "supermarket", "convenience", "greengrocer"]
+transport = ["bus_station", "public_transport", "railway_station"]
+green = ["park", "garden", "playground"]
+civic = ["community_centre", "townhall", "social_facility"]
+culture = ["library", "museum", "theatre", "arts_centre"]
+sport = ["sports_centre", "stadium", "pitch", "fitness_centre"]
