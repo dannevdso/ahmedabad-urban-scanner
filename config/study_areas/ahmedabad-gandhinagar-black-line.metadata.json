@@ -1,0 +1,110 @@
+{
+  "generated_utc": "2026-10-17T17:11:34.782776+00:00",
+  "area_id": "ahm_gnr_black_line_20261017",
+  "name": "Ahmedabad\u2013Gandhinagar black-line study area",
+  "status": "approximate_screenshot_digitisation",
+  "source_screenshot": "external-inputs/study-area-reference.png",
+  "source_image_pixels": [
+    588,
+    670
+  ],
+  "digitised_vertex_count": 39,
+  "crs": "EPSG:4326",
+  "recommended_metric_crs": "EPSG:32643",
+  "bbox_wgs84": [
+    72.41546685809394,
+    22.917600868878278,
+    72.73880381629021,
+    23.26728899071171
+  ],
+  "area_km2": 651.84,
+  "perimeter_km": 117.87,
+  "calibration": {
+    "method": "north-up Web-Mercator screen fit using visible place labels and landmarks",
+    "anchors": [
+      {
+        "name": "Pethapur",
+        "pixel": [
+          410,
+          71
+        ],
+        "longitude": 72.6690097,
+        "latitude": 23.2658686
+      },
+      {
+        "name": "Kalol",
+        "pixel": [
+          154,
+          111
+        ],
+        "longitude": 72.4966223,
+        "latitude": 23.2452165
+      },
+      {
+        "name": "Bopal Lake",
+        "pixel": [
+          103,
+          445
+        ],
+        "longitude": 72.4587752,
+        "latitude": 23.0385802
+      },
+      {
+        "name": "Ahmedabad",
+        "pixel": [
+          275,
+          445
+        ],
+        "longitude": 72.5800568,
+        "latitude": 23.0215374
+      },
+      {
+        "name": "Raysan",
+        "pixel": [
+          398,
+          225
+        ],
+        "longitude": 72.6483285,
+        "latitude": 23.1663954
+      },
+      {
+        "name": "Sabarmati Ashram",
+        "pixel": [
+          278,
+          384
+        ],
+        "longitude": 72.5809398,
+        "latitude": 23.0606666
+      },
+      {
+        "name": "Jetalpur",
+        "pixel": [
+          295,
+          665
+        ],
+        "longitude": 72.5966176,
+        "latitude": 22.8923003
+      }
+    ],
+    "estimated_positional_uncertainty": "approximately \u00b11 km; labels and screenshot georeferencing are not survey control"
+  },
+  "intended_coverage": [
+    "Ahmedabad ring-road area",
+    "Bopal",
+    "South Bopal",
+    "Gandhinagar"
+  ],
+  "limitations": [
+    "This is an approximate digitisation of the black line in the supplied screenshot.",
+    "It is not an administrative boundary, statutory development-plan boundary, or survey-grade geometry.",
+    "Replace it with an exact exported polygon if the original map drawing becomes available.",
+    "Use the polygon geometry for clipping; use the bbox file only for coarse download queries."
+  ],
+  "outputs": {
+    "geojson": "config/study_areas/ahmedabad-gandhinagar-black-line.geojson",
+    "geopackage": "config/study_areas/ahmedabad-gandhinagar-black-line.gpkg",
+    "shapefile_zip": "config/study_areas/ahmedabad-gandhinagar-black-line-shapefile.zip",
+    "bbox": "config/study_areas/ahmedabad-gandhinagar-black-line.bbox.txt",
+    "preview": "outputs/study_area/ahmedabad-gandhinagar-black-line-digitisation-preview.png"
+  }
+}

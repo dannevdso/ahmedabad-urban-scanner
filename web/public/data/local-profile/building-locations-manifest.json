@@ -1,0 +1,79 @@
+{
+  "asset": {
+    "audit_count": 162421,
+    "bounds": [
+      239164.64727507482,
+      2536651.5519223902,
+      264771.71825840976,
+      2561235.5119247623
+    ],
+    "bytes": 28701048,
+    "count": 162421,
+    "crs": "EPSG:32643",
+    "fields": [
+      "zone_objectid",
+      "zone_group",
+      "height_m",
+      "area_m2",
+      "volume_m3",
+      "suhi"
+    ],
+    "key": "buildingLocations",
+    "layer": "building_locations",
+    "path": "building-locations.fgb",
+    "sha256": "d31c94f8dacc0df1946d4ae8e2a88128bbf0dc9e031b8d071e82ca0ab69441f6",
+    "spatial_index_verified": true,
+    "units": {
+      "area_m2": "provisional square metres",
+      "height_m": "provisional metres",
+      "suhi": "unverified categorical class",
+      "volume_m3": "derived cubic metres (area_m2 \u00d7 height_m)"
+    }
+  },
+  "audit": {
+    "collapsed_value_equivalent": 0,
+    "dropped_conflict": 8995,
+    "dropped_outside_declared_zone": 4,
+    "ignored_layers": [
+      "181centraltemp"
+    ],
+    "layer_zone_mapping": {
+      "0-airport": 0,
+      "101northwest": 101,
+      "10west": 10,
+      "181-central-final": 181,
+      "18north": 18,
+      "19na": 19,
+      "35east": 35,
+      "40south": 40,
+      "41south": 41,
+      "52southwest": 53
+    }
+  },
+  "caveats": [
+    "VEDAS/ISRO-derived prototype building-point dataset; counts are not a verified census of unique physical buildings.",
+    "Central Zone 181 is count-only and has no synthetic zero attributes.",
+    "Height and area are provisional; SUHI is an unverified categorical class whose provenance remains unverified."
+  ],
+  "inputs_sha256_after": {
+    "external-inputs/amc_zones.geojson": "6b038cda4dcb4606864ed146686f0efc27463432e080d69b1a0655ae98f7d989",
+    "external-inputs/buildings.gpkg": "b9e83bae596992786836b41da8639a397164152fefa036756e78941aeba9aef0"
+  },
+  "inputs_sha256_before": {
+    "external-inputs/amc_zones.geojson": "6b038cda4dcb4606864ed146686f0efc27463432e080d69b1a0655ae98f7d989",
+    "external-inputs/buildings.gpkg": "b9e83bae596992786836b41da8639a397164152fefa036756e78941aeba9aef0"
+  },
+  "manifest_version": "local-profile-assets.v1",
+  "source": {
+    "amc_zones": {
+      "bytes": 69558,
+      "path": "external-inputs/amc_zones.geojson",
+      "sha256": "6b038cda4dcb4606864ed146686f0efc27463432e080d69b1a0655ae98f7d989"
+    },
+    "buildings": {
+      "bytes": 40275968,
+      "path": "external-inputs/buildings.gpkg",
+      "sha256": "b9e83bae596992786836b41da8639a397164152fefa036756e78941aeba9aef0"
+    }
+  }
+}

@@ -1,0 +1,604 @@
+{
+  "allowed_radii_m": [
+    400,
+    800,
+    1200
+  ],
+  "assets": {
+    "buildingLocations": {
+      "audit_count": 162421,
+      "bounds": [
+        239164.64727507482,
+        2536651.5519223902,
+        264771.71825840976,
+        2561235.5119247623
+      ],
+      "bytes": 28701048,
+      "count": 162421,
+      "crs": "EPSG:32643",
+      "fields": [
+        "zone_objectid",
+        "zone_group",
+        "height_m",
+        "area_m2",
+        "volume_m3",
+        "suhi"
+      ],
+      "layer": "building_locations",
+      "path": "building-locations.fgb",
+      "sha256": "d31c94f8dacc0df1946d4ae8e2a88128bbf0dc9e031b8d071e82ca0ab69441f6",
+      "spatial_index_verified": true,
+      "units": {
+        "area_m2": "provisional square metres",
+        "height_m": "provisional metres",
+        "suhi": "unverified categorical class",
+        "volume_m3": "derived cubic metres (area_m2 \u00d7 height_m)"
+      }
+    },
+    "centrality": {
+      "audit_count": 107,
+      "bounds": [
+        235167.87240937096,
+        2536809.2116421876,
+        268601.52888747666,
+        2574795.2958219736
+      ],
+      "bytes": 47080776,
+      "claim_type": "exact source geometry/fields",
+      "count": 135115,
+      "crs": "EPSG:32643",
+      "fields": [
+        "u",
+        "v",
+        "key",
+        "length",
+        "walk_time_min",
+        "highway",
+        "oneway",
+        "osm_id",
+        "seg_id",
+        "length_m",
+        "dir_code",
+        "cost_fwd",
+        "cost_rev",
+        "node_from",
+        "node_to",
+        "component",
+        "betw_edge",
+        "clo_mean",
+        "str_mean"
+      ],
+      "layer": "centrality",
+      "path": "centrality.fgb",
+      "provenance_status": "verified-source",
+      "sha256": "ab65330bbf077d1ad7f1aed60c7f1409a9100aaa3ded5636ede00f143e91234b",
+      "spatial_index_verified": true
+    },
+    "floodRisk": {
+      "audit_count": 2,
+      "bounds": [
+        238129.58468143563,
+        2535283.9801755724,
+        264858.7060764823,
+        2561680.9976936122
+      ],
+      "bytes": 13936680,
+      "claim_type": "exact source geometry/fields",
+      "count": 7020,
+      "crs": "EPSG:32643",
+      "fields": [
+        "uf_risk"
+      ],
+      "layer": "flood_risk",
+      "path": "flood-risk.fgb",
+      "provenance_status": "verified-source",
+      "risk_classes": [
+        "High Risk Areas",
+        "Moderate Risk Areas",
+        "Very High Risk Areas"
+      ],
+      "risk_field": "uf_risk",
+      "sha256": "6ed0264f9b5f69056ac9c2f9118a34d14de8edf4cc54201e1a7fb28c46cde189",
+      "spatial_index_verified": true
+    },
+    "gtfs_stops": {
+      "audit_count": 8,
+      "bounds": [
+        221615.38300971314,
+        2525553.5789044667,
+        277957.8370142542,
+        2582370.585307001
+      ],
+      "bytes": 1368896,
+      "claim_type": "source-modelled",
+      "count": 6737,
+      "crs": "EPSG:32643",
+      "fields": [
+        "stop_id",
+        "stop_name",
+        "route_ids"
+      ],
+      "layer": "gtfs_stops",
+      "path": "gtfs-stops.fgb",
+      "provenance_status": "derived-from-supplied-gtfs",
+      "sha256": "5d4d143903da4d061b0715b8640c3526830001b0b8563332ad0e26adec8493c1",
+      "spatial_index_verified": true
+    },
+    "heat_risk": {
+      "audit_count": 130,
+      "bounds": [
+        235100.0,
+        2536500.0,
+        268500.0,
+        2574900.0
+      ],
+      "bytes": 12189592,
+      "claim_type": "source-modelled",
+      "count": 49422,
+      "crs": "EPSG:32643",
+      "fields": [
+        "cell_id",
+        "built_frac",
+        "green_frac",
+        "water_frac",
+        "mean_h",
+        "uhi_risk",
+        "risk_class"
+      ],
+      "layer": "heat_risk",
+      "path": "heat_risk.fgb",
+      "provenance_status": "verified-source",
+      "sha256": "b4639736e603f988cbeb70ce8a50b81c1aab2a5e12b01782f075f7d454887771",
+      "spatial_index_verified": true
+    },
+    "height_2023": {
+      "bytes": 1123806,
+      "claim_type": "source-modelled",
+      "metadata": {
+        "bounds": [
+          235122.835788976,
+          2536468.160752406,
+          268602.835788976,
+          2575078.160752406
+        ],
+        "count": 1,
+        "crs": "EPSG:32643",
+        "dtype": "float32",
+        "height": 1287,
+        "nodata": -99.0,
+        "origin": [
+          235122.835788976,
+          2575078.160752406
+        ],
+        "pixelSize": [
+          30.0,
+          -30.0
+        ],
+        "transform": [
+          30.0,
+          0.0,
+          235122.835788976,
+          0.0,
+          -30.0,
+          2575078.160752406,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "width": 1116
+      },
+      "path": "height_2023.tif",
+      "provenance_status": "verified-source",
+      "sha256": "94464c81ed7cae1d9864d7453dcd8969ea662610055f91adcdb1305073be1914"
+    },
+    "lst": {
+      "bytes": 3217893,
+      "claim_type": "exact source numeric values",
+      "metadata": {
+        "bounds": [
+          235110.0,
+          2536470.0,
+          268620.0,
+          2575080.0
+        ],
+        "count": 1,
+        "crs": "EPSG:32643",
+        "dtype": "float32",
+        "height": 1287,
+        "nodata": -9999.0,
+        "origin": [
+          235110.0,
+          2575080.0
+        ],
+        "pixelSize": [
+          30.0,
+          -30.0
+        ],
+        "transform": [
+          30.0,
+          0.0,
+          235110.0,
+          0.0,
+          -30.0,
+          2575080.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "width": 1117
+      },
+      "path": "lst.tif",
+      "provenance_status": "verified-source",
+      "sha256": "2a652ad8558fb017d2057bb417db6de9d10e3b4181336b00487b8b394faf7f4a"
+    },
+    "ndvi": {
+      "bytes": 45810991,
+      "claim_type": "exact source numeric values",
+      "metadata": {
+        "bounds": [
+          235120.0,
+          2536470.0,
+          268620.0,
+          2575080.0
+        ],
+        "count": 1,
+        "crs": "EPSG:32643",
+        "dtype": "float32",
+        "height": 3861,
+        "nodata": -9999.0,
+        "origin": [
+          235120.0,
+          2575080.0
+        ],
+        "pixelSize": [
+          10.0,
+          -10.0
+        ],
+        "transform": [
+          10.0,
+          0.0,
+          235120.0,
+          0.0,
+          -10.0,
+          2575080.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "width": 3350
+      },
+      "path": "ndvi.tif",
+      "provenance_status": "verified-source",
+      "sha256": "f3aa0e99f16a1dd66864ff4a0dec6d1c3ecd2194d661feba131f13b5fd9e0358"
+    },
+    "parks_schools": {
+      "audit_count": 0,
+      "bounds": [
+        237196.286930001,
+        2541932.852564222,
+        264849.553846936,
+        2572985.1527858977
+      ],
+      "bytes": 141008,
+      "category_counts": {
+        "park": 676,
+        "school": 90
+      },
+      "claim_type": "approved representative points",
+      "count": 766,
+      "crs": "EPSG:32643",
+      "fields": [
+        "osm_id",
+        "name",
+        "kind",
+        "representative_point_rule"
+      ],
+      "layer": "parks_schools",
+      "path": "parks-schools.fgb",
+      "provenance_status": "approved-derived-poi-set",
+      "representative_point_rule": "approved-source-point",
+      "sha256": "f7dfa4f71356cfffa51fac87ae095951059f505719631f7f94fc6be55acfbdd8",
+      "spatial_index_verified": true
+    },
+    "space_syntax": {
+      "audit_count": 89,
+      "bounds": [
+        235167.87666434253,
+        2536809.5314294575,
+        268601.5291638798,
+        2574795.3956897454
+      ],
+      "bytes": 31047712,
+      "claim_type": "supplied external fields",
+      "count": 94723,
+      "crs": "EPSG:32643",
+      "fields": [
+        "seg_id",
+        "length_m",
+        "betw_edge",
+        "clo_mean",
+        "str_mean",
+        "connectivity",
+        "NC_400",
+        "TD_400",
+        "MD_400",
+        "NAIN_400",
+        "CH_400",
+        "NACH_400",
+        "NC_2500",
+        "TD_2500",
+        "MD_2500",
+        "NAIN_2500",
+        "CH_2500",
+        "NACH_2500"
+      ],
+      "layer": "space_syntax",
+      "path": "space_syntax.fgb",
+      "provenance_status": "verified-source",
+      "sha256": "38f6b50811aa6c286fbfad62cf78c070ce07531b507489923f8ab84a865ad05a",
+      "spatial_index_verified": true
+    },
+    "streets": {
+      "audit_count": 107,
+      "bounds": [
+        235167.87240937096,
+        2536809.2116421876,
+        268601.52888747666,
+        2574795.2958219736
+      ],
+      "bytes": 30876624,
+      "claim_type": "exact source geometry/fields",
+      "count": 135115,
+      "crs": "EPSG:32643",
+      "fields": [
+        "u",
+        "v",
+        "highway",
+        "oneway",
+        "seg_id",
+        "length_m",
+        "node_from",
+        "node_to"
+      ],
+      "layer": "streets",
+      "path": "streets.fgb",
+      "provenance_status": "verified-source",
+      "sha256": "26593e846cd6c0345ff9d9c38cde283b22be4492b3aa400adc27a926b16478f8",
+      "spatial_index_verified": true
+    }
+  },
+  "audit_center": [
+    251800.0,
+    2556000.0
+  ],
+  "bounds": [
+    239164.64727507482,
+    2536651.5519223902,
+    264771.71825840976,
+    2561235.5119247623
+  ],
+  "build_runtime_seconds": 37.959,
+  "building_locations_publication": {
+    "audit": {
+      "collapsed_value_equivalent": 0,
+      "dropped_conflict": 8995,
+      "dropped_outside_declared_zone": 4,
+      "ignored_layers": [
+        "181centraltemp"
+      ],
+      "layer_zone_mapping": {
+        "0-airport": 0,
+        "101northwest": 101,
+        "10west": 10,
+        "181-central-final": 181,
+        "18north": 18,
+        "19na": 19,
+        "35east": 35,
+        "40south": 40,
+        "41south": 41,
+        "52southwest": 53
+      }
+    },
+    "caveats": [
+      "VEDAS/ISRO-derived prototype building-point dataset; counts are not a verified census of unique physical buildings.",
+      "Central Zone 181 is count-only and has no synthetic zero attributes.",
+      "Height and area are provisional; SUHI is an unverified categorical class whose provenance remains unverified."
+    ]
+  },
+  "caveats": {
+    "flood_risk_area": "Flood-risk area is the exact union of source uf_risk polygons clipped to the metric profile circle; Low is unavailable because the supplied source has no Low Risk Areas class.",
+    "gtfs": "route_ids are derived from stop_times/trips in the supplied GTFS model; feed currency is not independently verified.",
+    "heat_risk": "Morphology heat-risk polygons are a source-modelled proxy, not observed heat exposure.",
+    "parks_schools": "Parks and schools/universities use the approved published representative-point set; raw Overpass ways and relations are not re-centroided during publication.",
+    "remote_sensing": "LST and NDVI are each one supplied scene/observation; they are not seasonal composites or time-series summaries.",
+    "vegetation_fraction": "Vegetation fraction is derived in the browser from NDVI pixels at or above the published threshold; it is not a validated canopy or shade measure."
+  },
+  "generated_at_utc": "2026-10-23T18:41:00.962638+00:00",
+  "manifest_version": "local-profile-assets.v1",
+  "metrics": {
+    "height2023": {
+      "bins": [
+        0,
+        3,
+        6,
+        10,
+        15,
+        25,
+        50
+      ],
+      "crs": "EPSG:32643",
+      "height": 1287,
+      "modelled": true,
+      "nodata": -99.0,
+      "oneScene": false,
+      "origin": [
+        235122.835788976,
+        2575078.160752406
+      ],
+      "pixelSize": [
+        30.0,
+        -30.0
+      ],
+      "unit": "metres",
+      "units": "metres",
+      "url": "height_2023.tif",
+      "width": 1116
+    },
+    "lst": {
+      "bins": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "crs": "EPSG:32643",
+      "height": 1287,
+      "modelled": false,
+      "nodata": -9999.0,
+      "oneScene": true,
+      "origin": [
+        235110.0,
+        2575080.0
+      ],
+      "pixelSize": [
+        30.0,
+        -30.0
+      ],
+      "unit": "\u00b0C",
+      "units": "\u00b0C",
+      "url": "lst.tif",
+      "width": 1117
+    },
+    "ndvi": {
+      "bins": [
+        -1,
+        0,
+        0.3,
+        0.6,
+        1
+      ],
+      "crs": "EPSG:32643",
+      "height": 3861,
+      "modelled": false,
+      "nodata": -9999.0,
+      "oneScene": true,
+      "origin": [
+        235120.0,
+        2575080.0
+      ],
+      "pixelSize": [
+        10.0,
+        -10.0
+      ],
+      "unit": "unitless",
+      "units": "unitless",
+      "url": "ndvi.tif",
+      "width": 3350
+    },
+    "vegetationFraction": {
+      "bins": [
+        0,
+        1,
+        2
+      ],
+      "derived": true,
+      "derivedFrom": "ndvi",
+      "threshold": 0.3,
+      "unit": "0\u20131",
+      "units": "0\u20131"
+    }
+  },
+  "provenance": {
+    "exact_labels": [
+      "exact source geometry/fields",
+      "source-modelled"
+    ],
+    "query_model": "client-selected center with bbox-indexed FlatGeobuf reads",
+    "status": "audited-static-publication"
+  },
+  "sources": {
+    "buildingLocations": {
+      "amc_zones": {
+        "bytes": 69558,
+        "path": "external-inputs/amc_zones.geojson",
+        "sha256": "6b038cda4dcb4606864ed146686f0efc27463432e080d69b1a0655ae98f7d989"
+      },
+      "buildings": {
+        "bytes": 40275968,
+        "path": "external-inputs/buildings.gpkg",
+        "sha256": "b9e83bae596992786836b41da8639a397164152fefa036756e78941aeba9aef0"
+      }
+    },
+    "centrality": {
+      "bytes": 39682048,
+      "path": "data/derived/planx/ahmedabad-gandhinagar-centrality-full-run-20261018/network_centrality_edges.gpkg",
+      "sha256": "81e564bb9657c64f51dfeb50f5f664c8610a801b62e1324271d024af025a0529"
+    },
+    "floodRisk": {
+      "bytes": 18462174,
+      "path": "external-inputs/ahm_urban_flood_risk_zones.PROVISIONAL.geojson",
+      "sha256": "e38118adbe808076ce81b4db02ca8a7689afec6c10ef2cd3a1fdde9bd3b3f54c"
+    },
+    "gtfs": {
+      "bytes": 5701732,
+      "path": "data/external/gtfs_compat.zip",
+      "sha256": "e65344627a50db8b8af85624ffc594bf609c3b4d80ec363490313b44d7572d9c"
+    },
+    "heat_risk": {
+      "bytes": 12009472,
+      "path": "data/derived/planx/ahmedabad-gandhinagar-full-analysis-outputs/heat_risk.gpkg",
+      "sha256": "079113de209931ff9618394989196bebde1af90d94db7dc985d42a4f4ffe8953"
+    },
+    "height_2023": {
+      "bytes": 1123806,
+      "path": "data/external/open-buildings-height/ahmedabad-gandhinagar-building-height-2023.tif",
+      "sha256": "94464c81ed7cae1d9864d7453dcd8969ea662610055f91adcdb1305073be1914"
+    },
+    "lst": {
+      "bytes": 3217893,
+      "path": "data/derived/environment-ahmedabad-gandhinagar/landsat-lst-celsius.tif",
+      "sha256": "2a652ad8558fb017d2057bb417db6de9d10e3b4181336b00487b8b394faf7f4a"
+    },
+    "ndvi": {
+      "bytes": 45810991,
+      "path": "data/derived/environment-ahmedabad-gandhinagar/sentinel-2-ndvi.tif",
+      "sha256": "f3aa0e99f16a1dd66864ff4a0dec6d1c3ecd2194d661feba131f13b5fd9e0358"
+    },
+    "parks_schools": {
+      "bytes": 217159,
+      "path": "web/public/data/pois.geojson",
+      "sha256": "6955373d1a1f5cc325560d46b48c095a3f576ef5147ec4a71ac6f9b239f6d54a"
+    },
+    "parks_schools_raw_overpass": {
+      "bytes": 779611,
+      "path": "data/external/poi/overpass_public_pois.json",
+      "sha256": "dd5738d810262f9e2017f20bc9eefa274a3b8ce3c2d17a0d6dd9da66299f653a"
+    },
+    "space_syntax": {
+      "bytes": 65859584,
+      "path": "data/derived/space_syntax/ahmedabad-gandhinagar-space-syntax-clipped.gpkg",
+      "sha256": "ba739f718b396c0135dbdae793748c0486f65eb101d4a918e5e2e5659738c15f"
+    },
+    "streets": {
+      "bytes": 35942400,
+      "path": "data/derived/planx/ahmedabad-gandhinagar-outputs/prepared_network.gpkg",
+      "sha256": "a1c96cf43ec07e0557a26a0cc143b492e048e5d641ebc34ca2bc57462b077dc3"
+    }
+  },
+  "target_crs": "EPSG:32643"
+}

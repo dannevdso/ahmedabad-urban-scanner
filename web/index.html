@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Google Open Buildings footprints and GTFS transit layers for the Ahmedabad study area." />
+    <title>Ahmedabad Urban Scanner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="skip-link" href="#map">Skip to map</a>
+    <header class="masthead">
+      <button class="icon-button mobile-only" id="menu-toggle" aria-label="Open indicator panel" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="brand">
+        <img class="brand-mark" src="%BASE_URL%da-za-logo.png" alt="DA-ZA logo" />
+        <div>
+          <div class="brand-title">Ahmedabad Urban Scanner</div>
+        </div>
+      </div>
+      <div class="masthead-meta">
+        <span class="prototype-date">Prototype Dated: 24.October.2026</span>
+        <span id="building-count">Loading buildings…</span>
+        <div class="masthead-layer-toggles" aria-label="Base map layers">
+          <button class="masthead-layer-toggle" type="button" role="switch" id="building-toggle" aria-checked="true"><span aria-hidden="true"></span>Buildings</button>
+          <button class="masthead-layer-toggle" type="button" role="switch" id="basemap-toggle" aria-checked="false"><span aria-hidden="true"></span>Background</button>
+          <button class="masthead-layer-toggle" type="button" role="switch" id="roads-toggle" aria-checked="true"><span aria-hidden="true"></span>Roads</button>
+        </div>
+        <button class="text-button" id="method-button">Method &amp; sources</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="sidebar" id="sidebar" aria-label="Indicator controls" tabindex="-1">
+        <button class="sidebar-collapse" id="sidebar-collapse" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Collapse indicator panel">‹</button>
+        <div class="sidebar-intro">
+          <h1>Layers</h1>
+          <p>Show fixed-style footprints or map overlays.</p>
+        </div>
+        <section class="featured-transit-controls" aria-labelledby="featured-transit-title">
+          <div class="featured-transit-header">
+            <h2 id="featured-transit-title">Transit accessibility</h2>
+          </div>
+          <div id="featured-transit-control"></div>
+          <div class="control-block catchment-opacity-control">
+            <label for="catchment-opacity-control">Catchment opacity <output id="catchment-opacity-value">35%</output></label>
+            <input id="catchment-opacity-control" type="range" min="10" max="70" value="35" step="1" />
+          </div>
+          <div class="control-block route-stop-opacity-control">
+            <label for="route-stop-opacity-control">Other route-stop opacity <output id="route-stop-opacity-value">60%</output></label>
+            <input id="route-stop-opacity-control" type="range" min="10" max="100" value="60" step="1" />
+          </div>
+        </section>
+        <section class="local-profile-controls" aria-labelledby="local-profile-title">
+          <div class="featured-transit-header">
+            <h2 id="local-profile-title">Local Area Profile</h2>
+          </div>
+          <div class="profile-control-body">
+            <p class="profile-help">Choose a radius, then place or drag the profile circle on the map.</p>
+            <div class="profile-control-row">
+              <label for="profile-radius">Radius</label>
+              <select id="profile-radius" aria-label="Local Area Profile radius">
+                <option value="400">400 m</option>
+                <option value="800">800 m</option>
+                <option value="1200">1200 m</option>
+              </select>
+            </div>
+            <div class="profile-actions">
+              <button class="primary-button" id="profile-place" type="button">Place profile</button>
+              <button class="text-button profile-clear" id="profile-clear" type="button">Clear</button>
+            </div>
+            <span class="profile-status" id="profile-status" role="status">No profile selected</span>
+          </div>
+        </section>
+        <div id="tps-provisional-control"></div>
+        <section class="planx-controls" aria-labelledby="planx-controls-title">
+          <div class="planx-controls-header">
+            <h2 id="planx-controls-title">Map layers</h2>
+          </div>
+          <div id="indicator-groups" class="indicator-groups"></div>
+          <div class="control-block">
+            <label for="opacity-control">Building footprint opacity <output id="opacity-value">82%</output></label>
+            <input id="opacity-control" type="range" min="20" max="100" value="82" step="1" />
+          </div>
+          <section class="space-syntax-controls" id="space-syntax-controls" aria-labelledby="space-syntax-title">
+            <div class="planx-controls-header">
+              <h2 id="space-syntax-title">Space syntax</h2>
+            </div>
+            <label class="overlay-select-row" id="space-syntax-control" for="space-syntax-select"><strong>Space syntax field <span class="overlay-status-badge">Not validated</span></strong><select id="space-syntax-select" aria-label="Space syntax field"></select><small>Choose a network measure to color the street layer.</small></label>
+          </section>
+          <div id="planx-overlay-controls"></div>
+        </section>
+        <div class="sidebar-footer">
+          <span>Research prototype</span>
+        </div>
+      </aside>
+      <button class="sidebar-scrim" id="sidebar-scrim" type="button" aria-label="Close indicator panel" tabindex="-1"></button>
+
+      <section class="map-shell" aria-label="Interactive urban scanner map">
+        <div id="map" aria-label="Map of building-level urban indicators"></div>
+        <div class="loading-panel" id="loading-panel" role="status">
+          <div class="loading-bar"><span></span></div>
+          <strong>Loading building footprints</strong>
+          <small>Google Open Buildings V3 data for the study boundary.</small>
+        </div>
+        <div class="map-title-block">
+          <span class="eyebrow" id="indicator-group">BUILDINGS</span>
+          <h2 id="indicator-title">Building footprints</h2>
+          <p id="indicator-context">Geometry-only display polygons with a fixed neutral style.</p>
+        </div>
+        <div class="summary-tile">
+          <span class="summary-label">Mapped footprints</span>
+          <strong id="summary-value">1,077,523</strong>
+          <span id="summary-period">Display geometry only</span>
+        </div>
+        <div class="legend-wrap">
+          <div class="legend-panel-header">
+            <span>Legend</span>
+            <button class="legend-info-button" id="legend-info-button" type="button" aria-expanded="false" aria-controls="legend-help" aria-label="How to read this layer">i</button>
+          </div>
+          <div class="legend" id="legend" aria-label="Map legend"></div>
+          <div class="legend-help" id="legend-help" hidden></div>
+        </div>
+        <div class="planx-active-summary" id="planx-active-summary" hidden></div>
+        <button class="map-reset" id="reset-view">Reset view</button>
+      </section>
+
+      <aside class="inspector" id="inspector" aria-label="Selected details" aria-hidden="true" inert>
+        <div class="inspector-header">
+          <div>
+            <span class="eyebrow" id="inspector-eyebrow">SELECTED DETAIL</span>
+            <h2 id="building-id">—</h2>
+          </div>
+          <button class="icon-button close-button" id="close-inspector" aria-label="Close details panel">×</button>
+        </div>
+        <div class="selected-metric">
+          <span id="selected-metric-label">Selected indicator</span>
+          <strong id="selected-metric-value">—</strong>
+        </div>
+        <section class="local-profile-dashboard" id="local-profile-dashboard" aria-label="Local Area Profile dashboard" hidden>
+          <div class="profile-dashboard-header">
+            <div>
+              <strong id="profile-dashboard-title">Profile</strong>
+              <small id="profile-inspector-status">No profile selected</small>
+            </div>
+            <button class="primary-button" id="profile-print" type="button" disabled>Print Profile</button>
+          </div>
+          <div id="profile-dashboard-sections"></div>
+        </section>
+        <div id="building-details" class="building-details" hidden></div>
+        <div id="transit-details" class="transit-details" hidden></div>
+        <div class="evidence-note" id="evidence-note" hidden>
+          <h3>Read this carefully</h3>
+          <p id="selected-method"></p>
+          <p class="source-line" id="selected-source"></p>
+        </div>
+      </aside>
+    </main>
+
+    <dialog id="method-dialog" class="method-dialog">
+      <div class="dialog-header">
+        <div>
+          <span class="eyebrow">METHOD &amp; SOURCES</span>
+          <h2>What this scanner does—and does not—show</h2>
+        </div>
+        <button class="icon-button close-button" id="close-method" aria-label="Close method dialog">×</button>
+      </div>
+      <div class="method-grid">
+        <section>
+          <h3>Current products</h3>
+          <p>Current study-area products include Google Open Buildings V3 footprints and building-form measures, the full prepared-network centrality layer, and published environmental rasters. Each map legend states its source period and scope.</p>
+        </section>
+        <section>
+          <h3>Bounded and sampled analyses</h3>
+          <p>Some accessibility and tessellation products use bounded areas or sampled origins. They support comparative screening, not claims of complete citywide service, observed use, quality, safety or affordability.</p>
+        </section>
+        <section>
+          <h3>Context layers</h3>
+          <p>GTFS transit and OpenStreetMap public-interest POIs are reference context. Their availability, completeness and dates differ from the main analytical products.</p>
+        </section>
+        <section>
+          <h3>Experimental and modelled products</h3>
+          <p>Building height is modelled, not surveyed. Heat risk is a morphology screening proxy. External shadow, solar and sky-view layers were supplied rather than rerun here, and raw space-syntax fields have not been independently validated. The supplied Development plan is sourced from <a href="https://arpm.studio/projects/ahmedabad-dp-2041" target="_blank" rel="noreferrer">ARPM Studio, <em>Development Plan for Ahmedabad 2041</em></a>; it is unverified experimental context, not analytical evidence.</p>
+        </section>
+        <section>
+          <h3>Environmental interpretation</h3>
+          <p>Land-surface temperature is not air or indoor temperature. NDVI and vegetation fraction are not validated tree-canopy or shade measures. The 0–30 m height scale is a display range, not a limit on source values.</p>
+        </section>
+        <section>
+          <h3>Building interpretation</h3>
+          <p>Footprint geometry describes mapped form, not building quality, height, occupancy, ownership or resident characteristics. Click the legend information control for the active product’s specific provenance and caveat.</p>
+        </section>
+      </div>
+      <div class="limitations" id="limitations"></div>
+      <div class="dialog-footer">
+        <span>Full methods and reproducibility commands are maintained in HANDBOOK.md.</span>
+        <button class="primary-button" id="method-done">Return to map</button>
+      </div>
+    </dialog>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

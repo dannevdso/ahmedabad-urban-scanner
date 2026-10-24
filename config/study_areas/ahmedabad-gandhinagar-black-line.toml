@@ -1,0 +1,8 @@
+[study_area]
+name = "Ahmedabad–Gandhinagar black-line study area"
+geometry = "config/study_areas/ahmedabad-gandhinagar-black-line.geojson"
+crs = "EPSG:4326"
+analysis_crs = "EPSG:32643"
+bbox = [72.415466858, 22.917600869, 72.738803816, 23.267288991]
+quality_status = "approximate_screenshot_digitisation"
+note = "Use polygon geometry for clipping; bbox is for coarse acquisition only."

@@ -1,0 +1,74 @@
+{
+  "manifest_version": "development-plan.v1",
+  "status": "supplied/unverified experimental contextual raster",
+  "source": {
+    "path": "external-inputs/development-plan-source.tiff",
+    "immutable_project_copy": "data/external/development-plan/development-plan-source.tiff",
+    "sha256": "a9a3e97cdd19c3a4230b8c1fd09ab21c2b33409b0c2453ffe0300b45ecb0cddf",
+    "bytes": 14972429,
+    "crs": "EPSG:3857",
+    "dimensions": [
+      1949,
+      1919
+    ],
+    "bands": [
+      "red",
+      "green",
+      "blue",
+      "alpha"
+    ],
+    "dtype": "uint8",
+    "pixel_size_m": [
+      39.148205178200385,
+      39.148205178200385
+    ],
+    "bounds_epsg3857": [
+      8034506.08211215,
+      2601043.514639239,
+      8110805.934004463,
+      2676168.9203762054
+    ]
+  },
+  "attribution": {
+    "publisher": "ARPM Studio",
+    "title": "Development Plan for Ahmedabad 2041",
+    "url": "https://arpm.studio/projects/ahmedabad-dp-2041"
+  },
+  "derivative": {
+    "file": "development-plan.png",
+    "sha256": "c7a538f0a7de17326c89114cfb976aed75170ffafc16ba7c56c54395e7865bb2",
+    "bytes": 2897590,
+    "format": "PNG RGBA",
+    "dimensions": [
+      1949,
+      1919
+    ],
+    "rgba_preserved": true
+  },
+  "maplibre_image_coordinates": [
+    [
+      72.175196139126,
+      23.364584536618
+    ],
+    [
+      72.860609370435,
+      23.364584536618
+    ],
+    [
+      72.860609370435,
+      22.74362328497
+    ],
+    [
+      72.175196139126,
+      22.74362328497
+    ]
+  ],
+  "wgs84_bounds": [
+    72.175196139126,
+    22.74362328497,
+    72.860609370435,
+    23.364584536618
+  ],
+  "source_embeds_legend_and_north_arrow": true,
+  "interpretation": "Visual contextual material only. Do not classify, recolor, crop, or treat as verified analytical evidence."
+}

@@ -1,0 +1,258 @@
+{
+  "generated_utc": "2026-10-18T13:40:53.263226+00:00",
+  "status": "ok",
+  "study_area": "Ahmedabad\u2013Gandhinagar black-line study area",
+  "scope": "full-study",
+  "paths": {
+    "input": "data/derived/planx/ahmedabad-gandhinagar-full-buildings-inputs.gpkg",
+    "output": "data/derived/planx/ahmedabad-gandhinagar-full-building-outputs/building_metrics.gpkg",
+    "config": "config/ahmedabad_gandhinagar_planx_full_buildings.toml",
+    "log": "data/derived/planx/ahmedabad-gandhinagar-full-building-logs/run_20261018T005947Z.json"
+  },
+  "run": {
+    "path": "data/derived/planx/ahmedabad-gandhinagar-full-building-logs/run_20261018T005947Z.json",
+    "run_id": "20261018T005947Z",
+    "status": "ok",
+    "command": [
+      "/Applications/QGIS.app/Contents/MacOS/bin/qgis_process",
+      "run",
+      "planx:buildingmetrics",
+      "--BUILDINGS=data/derived/planx/ahmedabad-gandhinagar-full-buildings-inputs.gpkg|layername=buildings",
+      "--OUTPUT=data/derived/planx/ahmedabad-gandhinagar-full-building-outputs/building_metrics.gpkg"
+    ],
+    "returncode": 0,
+    "started_at": "20261018T005947Z"
+  },
+  "counts": {
+    "input_buildings": 1077523,
+    "output_building_metrics": 1077523
+  },
+  "id_audit": {
+    "input_unique_building_ids": 1077523,
+    "output_unique_building_ids": 1077523,
+    "output_ids_in_input": 1077523,
+    "output_ids_missing_from_input": 0,
+    "input_ids_missing_from_output": 0,
+    "input_rows": 1077523,
+    "output_rows": 1077523,
+    "source_building_id_rows": 1077523,
+    "source_building_id_unique": 1077507,
+    "source_building_id_duplicates_excess": 16
+  },
+  "required_fields": {
+    "area_m2": {
+      "present": true,
+      "rows": 1077523,
+      "non_null": 1077523,
+      "numeric": 1077523,
+      "finite": 1077523
+    },
+    "perim_m": {
+      "present": true,
+      "rows": 1077523,
+      "non_null": 1077523,
+      "numeric": 1077523,
+      "finite": 1077523
+    },
+    "compact": {
+      "present": true,
+      "rows": 1077523,
+      "non_null": 1077523,
+      "numeric": 1077523,
+      "finite": 1077523
+    },
+    "convexity": {
+      "present": true,
+      "rows": 1077523,
+      "non_null": 1077523,
+      "numeric": 1077523,
+      "finite": 1077523
+    },
+    "rectang": {
+      "present": true,
+      "rows": 1077523,
+      "non_null": 1077523,
+      "numeric": 1077523,
+      "finite": 1077523
+    },
+    "elongation": {
+      "present": true,
+      "rows": 1077523,
+      "non_null": 1077523,
+      "numeric": 1077523,
+      "finite": 1077523
+    },
+    "orient_deg": {
+      "present": true,
+      "rows": 1077523,
+      "non_null": 1077523,
+      "numeric": 1077523,
+      "finite": 1077523
+    },
+    "court_m2": {
+      "present": true,
+      "rows": 1077523,
+      "non_null": 1077523,
+      "numeric": 1077523,
+      "finite": 1077523
+    },
+    "court_idx": {
+      "present": true,
+      "rows": 1077523,
+      "non_null": 1077523,
+      "numeric": 1077523,
+      "finite": 1077523
+    },
+    "fractal": {
+      "present": true,
+      "rows": 1077523,
+      "non_null": 1077523,
+      "numeric": 1077523,
+      "finite": 1077523
+    },
+    "corners": {
+      "present": true,
+      "rows": 1077523,
+      "non_null": 1077523,
+      "numeric": 1077523,
+      "finite": 1077523
+    },
+    "sharedwall": {
+      "present": true,
+      "rows": 1077523,
+      "non_null": 1077523,
+      "numeric": 1077523,
+      "finite": 1077523
+    }
+  },
+  "statistics": {
+    "footprint_area_m2": {
+      "min": 2.5129,
+      "p10": 18.9864,
+      "median": 67.5805,
+      "p90": 203.3541,
+      "max": 31646.4545
+    },
+    "area_m2": {
+      "min": 2.5069728205886745,
+      "p10": 18.94013574604922,
+      "median": 67.41551453917388,
+      "p90": 202.8598688093239,
+      "max": 31566.51362757148
+    },
+    "perim_m": {
+      "min": 6.336115191675055,
+      "p10": 17.998799884039325,
+      "median": 34.48760395381578,
+      "p90": 62.38735473148094,
+      "max": 2226.372097779845
+    },
+    "compact": {
+      "min": 0.06130960136488579,
+      "p10": 0.5644579524908228,
+      "median": 0.7393382867786048,
+      "p90": 0.7840195836148196,
+      "max": 0.946812552535724
+    },
+    "convexity": {
+      "min": 0.2419835582055846,
+      "p10": 0.9353645189523547,
+      "median": 1.0,
+      "p90": 1.0,
+      "max": 1.0000360685302074
+    },
+    "rectang": {
+      "min": 0.181080409414925,
+      "p10": 0.8810384678205943,
+      "median": 0.9999990798709831,
+      "p90": 1.000003538093016,
+      "max": 1.000116318787288
+    },
+    "elongation": {
+      "min": 0.0,
+      "p10": 0.06567981983333637,
+      "median": 0.3190945049078169,
+      "p90": 0.6292345924824021,
+      "max": 0.9698771485385026
+    },
+    "orient_deg": {
+      "min": 0.0,
+      "p10": 4.967568044120585,
+      "median": 87.78104422112229,
+      "p90": 171.15262621233202,
+      "max": 179.9999999994697
+    },
+    "court_m2": {
+      "min": 0.0,
+      "p10": 0.0,
+      "median": 0.0,
+      "p90": 0.0,
+      "max": 2409.89422592983
+    },
+    "court_idx": {
+      "min": 0.0,
+      "p10": 0.0,
+      "median": 0.0,
+      "p90": 0.0,
+      "max": 0.2923431327193012
+    },
+    "fractal": {
+      "min": 0.9522561670139549,
+      "p10": 1.0004497885094281,
+      "median": 1.0149884710822574,
+      "p90": 1.0772372615626944,
+      "max": 2.5196150800685233
+    },
+    "corners": {
+      "min": 3.0,
+      "p10": 4.0,
+      "median": 4.0,
+      "p90": 6.0,
+      "max": 241.0
+    },
+    "sharedwall": {
+      "min": 0.0,
+      "p10": 0.0,
+      "median": 0.0,
+      "p90": 0.0,
+      "max": 0.83247258829547
+    }
+  },
+  "quantile_method": "Exact deterministic nearest-rank quantiles: ceil(q*N)-1 zero-based offset after ascending ORDER BY; values are unrounded SQLite REAL values.",
+  "ratio_semantics": {
+    "convexity": "outer-ring area / convex-hull area",
+    "rectang": "outer-ring area / minimum-oriented-rectangle area",
+    "theoretical_upper_bound": 1.0,
+    "interpretation": "Small values above 1 are numerical overshoots of bounded ratios; source values are retained and not clipped."
+  },
+  "observed_anomalies": {
+    "convexity_gt_1": 715,
+    "convexity_max_excess": 3.6068530207e-05,
+    "rectang_gt_1": 406965,
+    "rectang_max_excess": 0.000116318787288
+  },
+  "stages": {
+    "buildingmetrics": {
+      "status": "completed",
+      "input_count": 1077523,
+      "output_count": 1077523
+    },
+    "tessellation": {
+      "status": "not_run",
+      "reason": "No full-study tessellation output is present or claimed."
+    },
+    "spacematrix": {
+      "status": "blocked",
+      "reason": "No verified floor-count/levels field is available; no DEFAULT_LEVELS assumption was supplied."
+    },
+    "space_syntax": {
+      "status": "not_run",
+      "reason": "Space syntax was not rerun for this full-study report."
+    }
+  },
+  "limitations": [
+    "Shape metrics are footprint geometry measures in projected EPSG:32643; they are not height, floor-area, land-use, occupancy, or quality measures.",
+    "Values above 1.0 are retained as observed PlanX outputs and counted; their small positive excess is reported as floating-point numerical overshoot of bounded ratios, with no clipping or normalization.",
+    "No planx_cell_m2 is reported because full-study tessellation is absent."
+  ]
+}

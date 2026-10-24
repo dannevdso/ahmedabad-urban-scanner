@@ -1,0 +1,33 @@
+[project]
+name = "Ahmedabad Urban Scanner"
+study_area = "Ahmedabad–Gandhinagar black-line study area"
+analysis_crs = "EPSG:32643"
+source_crs = "EPSG:4326"
+
+[boundary]
+path = "config/study_areas/ahmedabad-gandhinagar-black-line.gpkg"
+layer = "study_area"
+
+[inputs]
+osm = "data/external/osm/ahmedabad-gandhinagar-osm.gpkg"
+buildings = "data/google-open-buildings-v3/raw"
+
+[selection]
+max_buildings = 30000
+building_grid_spacing_m = 150.0
+representative_origin_grid_m = 1000.0
+criticality_origin_grid_m = 2000.0
+candidate_site_grid_m = 500.0
+
+[network]
+source_layer = "lines"
+walkable_highway_required = true
+min_length_m = 1.0
+walk_speed_kmh = 4.8
+snap_tolerance_m = 2.0
+
+[analysis]
+max_building_metrics = 30000
+run_tessellation = false
+run_space_syntax = false
+notes = "Bounded current-study PlanX package: full current OSM highway line source and deterministic 30,000-footprint building subset from the 1,077,523-footprint current source."

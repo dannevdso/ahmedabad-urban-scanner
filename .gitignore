@@ -1,0 +1,39 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+.qgis/
+.DS_Store
+cache/
+data/
+# Runtime-only derivatives are intentionally versioned for the static site.
+!web/public/data/
+!web/public/data/**
+web/node_modules/
+web/dist/
+web/.vite/
+web/.tmp-*
+web/coverage/
+web/playwright-report/
+web/test-results/
+
+# Local source/rollback material must never enter the Pages repository.
+archive/
+archives/
+output/
+outputs/
+prototypes/
+*.bak
+*.tmp
+*~
+
+# Local environments and credentials.
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.pfx
+credentials*.json
+service-account*.json
