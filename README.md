@@ -1,142 +1,151 @@
 # Ahmedabad Urban Scanner
 
-The active project is a staged Ahmedabad building scanner covering building
-footprints, pedestrian-network 5/10/15-minute access, heat, greenery, and an
-interactive web visualisation. See `AHMEDABAD_SCANNER.md` for the evidence
-rules, phases, and current pilot configuration.
+An experimental web-based urban analysis tool for Ahmedabad and the surrounding study area.
 
-See `HANDBOOK.md` for the continuously maintained manual reproduction guide,
-including source URLs, exact commands, parameters, outputs, results, and
-limitations.
+The scanner combines building data, pedestrian accessibility, environmental indicators, mapped facilities, transport context, and selected urban-analysis layers in an interactive MapLibre map.
 
-The interactive pilot is in `web/`. Rebuild its browser data and run it with:
+> **Status:** Experimental research prototype. Data are incomplete and partly provisional. Accuracy is not guaranteed, and the scanner should not be treated as an official municipal, cadastral, planning, or decision-support system.
+
+## Website
+
+The interactive application is located in [`web/`](web/).
+
+It provides:
+
+- interactive building and urban-context mapping;
+- Google Open Buildings V3 building footprints;
+- building-location profiles using a separate provisional point dataset;
+- 5-, 10-, and 15-minute pedestrian-accessibility analysis;
+- mapped destinations and facility categories;
+- heat and greenery context from Landsat and Sentinel-2 imagery;
+- selected PlanX and space-syntax context layers;
+- flood-risk and development-plan overlays;
+- optional Town Planning Scheme boundary selection;
+- local area profiles for circles and selected TPS polygons;
+- A2 landscape, A3 landscape, and A3 portrait printable reports;
+- source labels, methods, caveats, legends, and explicit no-data states.
+
+## Run the website locally
+
+From the repository root:
 
 ```bash
+uv sync --group dev
 uv run python scripts/build_web_data.py
+
 npm --prefix web install
 npm --prefix web run dev -- --port 4173
 ```
 
-The current reversible prototype also publishes 162,421 conflict-filtered
-VEDAS/ISRO-derived building locations and an optional off-by-default layer of
-312 provisional Town Planning Scheme polygons. Clicking a TPS runs the Local
-Area Profile against its authoritative exact boundary and feeds the same
-inspector and A2 landscape, A3 landscape and A3 portrait print model used by circle profiles. Internal TPS
-`source_id` and workflow status values are used only internally; readers see the
-TPS name and number without repeated status text. Building profiles report
-field-specific area, height and derived-volume distributions, categorical SUHI
-composition, and a qualified point-selected stored-area share. Circles and TPS
-use boundary-inclusive building-location membership without polygon-only
-footprint-coverage claims. The legacy building-polygon analytical asset remains
-available only as a rollback fallback when the point asset is unavailable. See
-`reports/tps_building_location_release_qa.md` for the verified counts, parity
-table, browser/range-request evidence and print gate.
+Open the local development URL shown by Vite.
 
-All three print formats are fixed one-page physical sheets: A2 landscape
-594 × 420 mm with 16 columns and 15 mm margins, A3 landscape 420 × 297 mm with
-12 columns and 12 mm margins, and A3 portrait 297 × 420 mm with 8 columns and
-12 mm margins. Each contains one square boundary-only key map with the
-selected circle or exact TPS geometry, plus a north arrow, approximate 5 km
-scale and a visible experimental/unverified/no-accuracy-guarantee disclaimer.
-The supplied georeferenced Development plan is attributed to ARPM Studio,
-*Development Plan for Ahmedabad 2041* (<https://arpm.studio/projects/ahmedabad-dp-2041>),
-published as a visually unchanged contextual raster, and remains the final
-default-off control. Its raster is below the first OSM road layer so OSM roads
-and all application overlays render above it. The hatched Computed result box
-has been removed. The supplied Jantri file is incorrect and is explicitly
-excluded from the roadmap and publication; it is not deferred.
-
-The active building source is **Google Research Open Buildings V3**. Overture
-transport data and earlier City2Graph experiments remain available for source
-comparison, but Overture footprints are not used in the pilot building table.
-
-The existing Overture/City2Graph experiments below are preserved as source
-exploration. Their POI proximity graphs are not the project's final
-pedestrian-accessibility model.
-
-## Earlier Overture Maps with City2Graph experiment
-
-This project reproduces the Overture Maps workflow from the City2Graph tutorial and the linked Medium article: download `segment`, `building`, and `connector` data, process road barriers, build a morphological graph, and save a map.
-
-## Setup
-
-Requires Python 3.12–3.14. The commands below use [`uv`](https://docs.astral.sh/uv/), which creates an isolated `.venv` and locks dependencies.
+To create a production build:
 
 ```bash
-uv sync
-# Optional: install PyTorch + PyTorch Geometric for GNN conversion
-uv sync --extra gnn
+npm --prefix web run build
 ```
 
-## Run
-
-The default is Liverpool, UK, matching the City2Graph example. It downloads data from Overture Maps and geocodes the place through Nominatim.
+To run the frontend test suite:
 
 ```bash
-uv run python run_overture.py
+npm --prefix web test
 ```
 
-For a smaller or different study area:
+## Data and analytical scope
 
-```bash
-uv run python run_overture.py --place "Kyoto, Japan" --distance 500 --clipping-buffer 300
+The active building-footprint source is **Google Research Open Buildings V3**.
+
+Other project sources include:
+
+- **OpenStreetMap** for pedestrian networks, roads, and mapped destinations;
+- **Landsat Collection 2 Level-2** imagery for land-surface-temperature context;
+- **Copernicus Sentinel-2 Level-2A** imagery for vegetation context;
+- **GTFS** data for qualified scheduled-service and route-reach context;
+- **VEDAS/ISRO-derived** building-location and flood-risk data;
+- selected **PlanX** and supplied space-syntax layers;
+- a supplied **Development Plan for Ahmedabad 2041** raster, attributed to ARPM Studio.
+
+The website renders precomputed browser assets. Heavy data acquisition, spatial processing, auditing, and analytical calculations are performed through the Python workflow rather than in the browser.
+
+## Important interpretation limits
+
+The scanner does not directly measure:
+
+- pedestrian activity;
+- urban vitality;
+- facility quality, capacity, or observed use;
+- population, occupancy, tenure, or resident characteristics;
+- air temperature or personal heat exposure;
+- tree canopy or shade from NDVI alone;
+- verified transit reliability, capacity, ridership, or service quality.
+
+Accessibility results describe network proximity to mapped destinations. They do not establish that a facility is used, accessible to every person, open at a particular time, or of a particular quality.
+
+The Ahmedabad–Gandhinagar study extent was digitised and approximately georeferenced from a supplied image. It is suitable as a reproducible clipping and acquisition extent, but it is not an official administrative, statutory, property, or development-plan boundary.
+
+Some building-location attributes, including area, height, derived volume, and categorical SUHI values, are provisional and retain their source-specific caveats.
+
+## Reproducibility documentation
+
+For the full workflow, parameters, source URLs, commands, outputs, audits, and limitations, see:
+
+- [`HANDBOOK.md`](HANDBOOK.md) — detailed reproduction manual;
+- [`AHMEDABAD_SCANNER.md`](AHMEDABAD_SCANNER.md) — staged analytical design;
+- [`reports/`](reports/) — data audits, QA reports, and release evidence;
+- [`project-history-summary.md`](project-history-summary.md) — project history and verified state.
+
+The primary pilot configuration is:
+
+```text
+config/ahmedabad_pilot.toml
 ```
 
-Reuse downloaded GeoJSON files without downloading again:
+The pilot uses:
 
-```bash
-uv run python run_overture.py --place "Liverpool, UK" --skip-download
+- EPSG:4326 for source coordinates;
+- EPSG:32643 for metric analysis;
+- 5-, 10-, and 15-minute walking thresholds;
+- a walking speed of 4.8 km/h;
+- a maximum accepted building-to-network snap distance of 250 m.
+
+## Project structure
+
+```text
+ahmedabad-urban-scanner/
+├── ahmedabad_scanner/       # reusable Python analysis functions
+├── config/                  # study areas and analytical parameters
+├── data/                    # downloaded and generated data
+├── outputs/                 # generated maps and analytical outputs
+├── reports/                 # audits, summaries, and QA evidence
+├── scripts/                 # acquisition and processing workflows
+├── tests/                   # Python tests
+├── web/                     # Vite/MapLibre web application
+├── AHMEDABAD_SCANNER.md     # staged analytical design
+├── HANDBOOK.md              # reproducibility handbook
+├── pyproject.toml
+└── uv.lock
 ```
 
-For a locality without a polygon boundary in Nominatim, use a WGS84 bounding
-box as `min_lon min_lat max_lon max_lat`. This is the Navrangpura, Ahmedabad
-example used in testing:
+Large raw datasets and generated files are intentionally kept outside normal source-control workflows where appropriate. The scripts, configurations, reports, and handbook document how to rebuild them.
 
-```bash
-uv run python run_overture.py \
-  --bbox 72.5443429 23.0159998 72.5843429 23.0559998 \
-  --distance 2000 --clipping-buffer 300 --plot-all-buildings \
-  --output-dir data/navrangpura-ahmedabad
-```
+## Attribution
 
-The interrupted citywide Ahmedabad download is preserved in
-`data/ahmedabad/`; it contains the segment, building, and connector GeoJSON
-files downloaded before graph construction was interrupted.
+Please follow the current attribution and licensing requirements of every source before sharing derived outputs.
 
-For a high-resolution graph-focused PNG from the already downloaded
-Navrangpura data:
+Relevant sources include:
 
-```bash
-uv run python run_overture.py \
-  --bbox 72.5443429 23.0159998 72.5843429 23.0559998 \
-  --distance 2000 --clipping-buffer 300 \
-  --plot-all-buildings --focus-graph --dpi 300 \
-  --figure-name navrangpura_graph_focused_300dpi.png \
-  --skip-download --output-dir data/navrangpura-ahmedabad
-```
+- Google Research Open Buildings V3;
+- OpenStreetMap contributors;
+- OpenMapTiles and the selected basemap provider;
+- Landsat and USGS/NASA data;
+- Copernicus Sentinel-2 data;
+- Microsoft Planetary Computer;
+- ARPM Studio, *Development Plan for Ahmedabad 2041*;
+- supplied VEDAS/ISRO-derived datasets;
+- PlanX and other upstream analytical tools.
 
-Law Garden was run with a separate 2 km x 2 km surrounding box centered on
-the geocoded park location, using a 1 km graph radius. Its output is in
-`data/law-garden-ahmedabad/law_garden_graph_focused_300dpi.png`.
+## License and responsibility
 
-### Reading the morphology map
+This repository is maintained for research and experimental urban-analysis purposes.
 
-- Light grey polygons are the raw downloaded building footprints.
-- Red dots are place-space nodes created by the morphological graph; they are
-  not guaranteed to be one dot per building.
-- Red lines represent place-to-place adjacency (`touched_to`).
-- Blue dots are movement-space nodes, representing processed street segments.
-- Blue lines represent movement-to-movement street connectivity
-  (`connected_to`).
-- Purple lines represent place-to-movement interfaces (`faced_to`).
-
-This graph describes spatial structure and connectivity. It does not by itself
-measure pedestrian activity, vitality, traffic volume, land-use intensity, or
-street quality. Those interpretations require additional attributes or field
-data.
-
-Outputs are written to `data/overturemaps/`, including the downloaded GeoJSON files and a `*_city2graph.png` map. The data request requires internet access and may take time or be rate-limited by Overture Maps/Nominatim.
-
-## Data and attribution
-
-The script uses Overture Maps data and Nominatim geocoding. Follow their current attribution, licensing, and usage policies when sharing outputs. Downloaded data and generated images are intentionally kept outside version control.
+The author accepts no responsibility for decisions, interpretations, maps, measurements, or derived outputs produced from this prototype. Verify all data, boundaries, sources, and calculations independently before using them for planning, policy, design, investment, or public communication.
